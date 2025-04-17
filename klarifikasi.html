@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Klasifikasi Buah Kelapa Sawit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #7aa8ce;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: rgb(39, 155, 227);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #fbe605;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Klasifikasi Buah Kelapa Sawit</h2>
+    <label>Panjang (cm):</label>
+    <input type="number" id="panjang" placeholder="Masukkan panjang buah">
+    
+    <label>Lebar (cm):</label>
+    <input type="number" id="lebar" placeholder="Masukkan lebar buah">
+    
+    <label>Berat (gram):</label>
+    <input type="number" id="berat" placeholder="Masukkan berat buah">
+
+    <button onclick="klasifikasikan()">Klasifikasikan</button>
+
+    <div id="hasil"></div>
+  </div>
+
+  <script>
+    function klasifikasikan() {
+      const panjang = parseFloat(document.getElementById('panjang').value);
+      const lebar = parseFloat(document.getElementById('lebar').value);
+      const berat = parseFloat(document.getElementById('berat').value);
+      const hasil = document.getElementById('hasil');
+
+      if (isNaN(panjang) || isNaN(lebar) || isNaN(berat)) {
+        hasil.textContent = "Mohon isi semua data dengan benar.";
+        return;
+      }
+
+      let klasifikasi = "";
+
+      // Logika klasifikasi bisa dimodifikasi sesuai kebutuhan
+      if (berat > 1000 || panjang > 20 || lebar > 15) {
+        klasifikasi = "Buah Besar";
+      } else if (berat > 500 || panjang > 15 || lebar > 10) {
+        klasifikasi = "Buah Sedang";
+      } else {
+        klasifikasi = "Buah Kecil";
+      }
+
+      hasil.textContent = `Klasifikasi: ${klasifikasi}`;
+    }
+  </script>
+</body>
+</html>
